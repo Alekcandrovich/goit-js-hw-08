@@ -15,4 +15,4 @@ player.on(
 const saveTime = localStorage.getItem('videoplayer-current-time');
 if (saveTime) {
   player.setCurrentTime(saveTime);
-}
+};
