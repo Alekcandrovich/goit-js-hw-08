@@ -31,4 +31,4 @@ if (saveFeedbackFormState) {
   messageLine.value = message;
 } else {
   emailLine.focus();
-}
+};
