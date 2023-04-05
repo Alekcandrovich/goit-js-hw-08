@@ -1,4 +1,5 @@
 import throttle from 'lodash.throttle';
+
 const form = document.querySelector('.feedback-form');
 const emailLine = form.elements.email;
 const messageLine = form.elements.message;
