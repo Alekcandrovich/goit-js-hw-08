@@ -1,35 +1,34 @@
 const form = document.querySelector('.feedback-form');
+const emailLine = form.elements.email;
+const messageLine = form.elements.message;
 
 form.addEventListener('submit', e => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const formData = {
-        email: form.elements.email.value,
-        message: form.elements.message.value
-    };
-
+  if (emailLine.value && messageLine.value) {
+    const formData = { email: emailLine.value, message: messageLine.value };
     console.log(formData);
-
     localStorage.removeItem('feedback-form-state');
-
     form.reset();
-
-    form.elements.email.focus();
+    emailLine.focus();
+  } else {
+    alert('Пожалуйста, заполните все обязательные поля!');
+  }
 });
 
 form.addEventListener('input', _.throttle(e => {
-    const formData = {
-        email: form.elements.email.value,
-        message: form.elements.message.value
-    };
+    const formData = { email: emailLine.value, message: messageLine.value };
 
-    localStorage.setItem('feedback-form-state', JSON.stringify(formData))
-}, 500));
+    localStorage.setItem('feedback-form-state', JSON.stringify(formData));
+  }, 500)
+);
 
 const saveFeedbackFormState = localStorage.getItem('feedback-form-state');
 
 if (saveFeedbackFormState) {
-    const { email, message } = JSON.parse(saveFeedbackFormState);
-    form.elements.email.value = email;
-    form.elements.message.value = message;
-};
+  const { email, message } = JSON.parse(saveFeedbackFormState);
+  emailLine.value = email;
+  messageLine.value = message;
+} else {
+  emailLine.focus();
+}
