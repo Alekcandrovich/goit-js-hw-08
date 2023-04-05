@@ -1,7 +1,7 @@
-// import throttle from 'lodash.throttle';
+import throttle from 'lodash.throttle';
 
 const Vimeo = window.Vimeo;
-const throttle = window.throttle;
+// const throttle = window.throttle;
 
 const player = new Vimeo.Player('vimeo-player');
 
