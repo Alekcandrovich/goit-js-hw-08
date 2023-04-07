@@ -18,7 +18,7 @@ form.addEventListener('submit', e => {
   }
 });
 
-form.addEventListener('input', throttle(e => {
+form.addEventListener('input', throttle (e => {
     const formData = { email: emailLine.value, message: messageLine.value };
 
     localStorage.setItem('feedback-form-state', JSON.stringify(formData));
